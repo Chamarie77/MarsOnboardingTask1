@@ -106,6 +106,45 @@ this.ScenarioInitialize(scenarioInfo);
             }
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("edit profile file with valid details")]
+        [NUnit.Framework.TestCaseAttribute("Sinhalese", "SpecFlow", "Java", null)]
+        [NUnit.Framework.TestCaseAttribute("English", "C#", "ISTQB", null)]
+        [NUnit.Framework.TestCaseAttribute("Sign", "Sellenium", "Microsoft", null)]
+        public void EditProfileFileWithValidDetails(string languages, string skills, string certifications, string[] exampleTags)
+        {
+            string[] tagsOfScenario = exampleTags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Languages", languages);
+            argumentsOfScenario.Add("Skills", skills);
+            argumentsOfScenario.Add("Certifications", certifications);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("edit profile file with valid details", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 15
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 16
+ testRunner.Given("I logged into localhost:5000/Home successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 17
+ testRunner.When("I navigate to Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 18
+ testRunner.When(string.Format("I update \'{0}\', \'{1}\' and \'{2}\' on an existing Profile File", languages, skills, certifications), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 19
+ testRunner.Then(string.Format("the Profile file s hould have the updated \'{0}\', \'{1}\' and \'{2}\'", languages, skills, certifications), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

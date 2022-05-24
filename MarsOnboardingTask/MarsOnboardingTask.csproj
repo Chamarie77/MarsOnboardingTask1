@@ -16,6 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Test\" />
+    <Folder Include="Pages\" />
     <Folder Include="SpecFlow\" />
   </ItemGroup>
 
