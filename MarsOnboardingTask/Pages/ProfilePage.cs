@@ -64,14 +64,10 @@ namespace MarsOnboardingTask.Pages
             // wait until the entire profile page is displayed
             Wait.WaitToBeVisible(driver, "XPath", "//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[1]/tr/td[1]", 6);
 
-            //*[@id="account-profile-section"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[2]/tr/td/div/div[1]/input
 
             // click on edit pen icon
             IWebElement goToEditIcon = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[2]/tr/td[3]/span[1]/i"));
             goToEditIcon.Click();
-
-            //IWebElement languageTextbox = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[2]/tr/td[1]"));
-            //languageTextbox.Clear();
 
             IWebElement findRecordCreated = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[2]/tr/td/div/div[1]/input"));
             findRecordCreated.Clear();
@@ -82,30 +78,12 @@ namespace MarsOnboardingTask.Pages
                 //click on update buton
                 IWebElement updateButton = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[2]/tr/td/div/span/input[1]"));
                 updateButton.Click();
-               
-                // click on edit pen icon
-                //IWebElement goToEditIcon = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[2]/tr/td[3]/span[1]/i"));
-                //goToEditIcon.Click();
 
             }
             else
             {
                 Assert.Fail("Record to be edited hasn't found.Record not edited");
             }
-
-            //Edit language
-            Wait.WaitToBeVisible(driver, "XPath", "//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[2]/tr/td/div/div[1]/input", 10);
-            //*[@id="account-profile-section"]/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[2]/tr/td/div/div[1]/input
-            IWebElement languageTextbox = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[2]/tr/td/div/div[1]/input"));
-            languageTextbox.Clear();
-
-            // wait until the language text box clear
-            
-            languageTextbox.SendKeys(language);
-
-            //click on update button
-           // IWebElement updateButton = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[2]/tr/td/div/span/input[1]"));
-            //updateButton.Click();
         }
         public string GetEditedLanguage(IWebDriver driver)
         {

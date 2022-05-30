@@ -13,14 +13,11 @@ namespace MarsOnboardingTask.Pages
     {
         public void LoginSteps(IWebDriver driver)
         {
-           
-
             // launch localhost:5000 portal
             driver.Navigate().GoToUrl("http://localhost:5000/Home");
 
             try
-            {
-                
+            {              
                 // click on "Sign In" link
                 driver.FindElement(By.LinkText("Sign In")).Click();
 
@@ -39,11 +36,7 @@ namespace MarsOnboardingTask.Pages
             {
                 Assert.Fail("Prpfile  Page login page did not launch", ex.Message);
                 throw;
-            }
-            
-           // IWebElement helloChamarie = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/div[1]/a"));
-
-            
+            }           
         }
     }
 }
