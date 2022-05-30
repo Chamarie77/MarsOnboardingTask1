@@ -98,10 +98,10 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("I navigate to Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 12
- testRunner.When("I create a new profile", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I create a new record for Language", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 13
- testRunner.Then("Then the file should be created successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("Then the new record should be created successfully", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -109,16 +109,13 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("edit profile file with valid details")]
-        [NUnit.Framework.TestCaseAttribute("Sinhalese", "SpecFlow", "Java", null)]
-        [NUnit.Framework.TestCaseAttribute("English", "C#", "ISTQB", null)]
-        [NUnit.Framework.TestCaseAttribute("Sign", "Sellenium", "Microsoft", null)]
-        public void EditProfileFileWithValidDetails(string languages, string skills, string certifications, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("Japanese", null)]
+        [NUnit.Framework.TestCaseAttribute("Sign", null)]
+        public void EditProfileFileWithValidDetails(string languages, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("Languages", languages);
-            argumentsOfScenario.Add("Skills", skills);
-            argumentsOfScenario.Add("Certifications", certifications);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("edit profile file with valid details", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 15
 this.ScenarioInitialize(scenarioInfo);
@@ -137,10 +134,10 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("I navigate to Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 18
- testRunner.When(string.Format("I update \'{0}\', \'{1}\' and \'{2}\' on an existing Profile File", languages, skills, certifications), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("I update \'{0}\' on existing Profile File", languages), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 19
- testRunner.Then(string.Format("the Profile file s hould have the updated \'{0}\', \'{1}\' and \'{2}\'", languages, skills, certifications), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("the record should have the updated \'{0}\'", languages), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
