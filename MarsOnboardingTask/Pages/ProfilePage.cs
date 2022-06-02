@@ -41,20 +41,24 @@ namespace MarsOnboardingTask.Pages
             // Click on Add button for language
             IWebElement addLanguageButton = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[3]/input[1]"));
             addLanguageButton.Click();
-            Wait.WaitToBeClickable(driver, "XPath", "//*[@id='account-profile-section']/div/div[1]/div[2]/div/span/div/a[1]", 10);
-
-
+            //Wait.WaitToBeClickable(driver, "XPath", "//*[@id='account-profile-section']/div/div[1]/div[2]/div/span/div/a[1]", 10);
+            //Wait.WaitToBeClickable(driver, "XPath", "//*[text()[contains(.,'Sinhalese')]]", 10);
+            Wait.WaitToBeVisible(driver, "XPath", "//td[text()[contains(.,'Sinhalese')]]", 20);
+            Thread.Sleep(5000);
+            
         }
 
         public string GetLanguage(IWebDriver driver)
         {
-            IWebElement actualLanguage = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[2]/tr/td[1]"));
+            //IWebElement actualLanguage = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[2]/tr/td[1]"));
+            IWebElement actualLanguage = driver.FindElement(By.XPath("//*[text()[contains(.,'Sinhalese')]]"));
             return actualLanguage.Text;
         }
 
         public string GetLevel(IWebDriver driver)
         {
-            IWebElement actualLevel = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[2]/select/option[5]"));
+            //IWebElement actualLevel = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[2]/select/option[5]"));
+            IWebElement actualLevel = driver.FindElement(By.XPath("//*[text()[contains(.,'Native/Bilingual')]]"));
             return actualLevel.Text;
         }
 

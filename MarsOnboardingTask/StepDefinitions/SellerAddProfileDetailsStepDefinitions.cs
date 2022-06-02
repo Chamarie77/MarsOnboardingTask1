@@ -3,6 +3,7 @@ using MarsOnboardingTask.Utilities;
 using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
 using System;
+using System.Threading;
 using TechTalk.SpecFlow;
 
 namespace MarsOnboardingTask.StepDefinitions
@@ -46,12 +47,13 @@ namespace MarsOnboardingTask.StepDefinitions
         [Then(@"Then the new record should be created successfully")]
         public void ThenThenTheNewRecordShouldBeCreatedSuccessfully()
         {
+            Thread.Sleep(5000);
             //ProfilePage profilePageObj = new ProfilePage();
             string newLanguage = profilePageObj.GetLanguage(driver);
             string newLevel = profilePageObj.GetLevel(driver);
 
-            Assert.That(newLanguage == "Sinhalese", "Actual Language and expected Language do not match" );
-            Assert.That(newLevel == "Native/Bilingual", "Actual Level and expected Level do not match");
+            Assert.That(newLanguage.Equals("Sinhalese"), "Actual Language and expected Language do not match" );
+            Assert.That(newLevel.Equals("Native/Bilingual"), "Actual Level and expected Level do not match");
         }
               
         
