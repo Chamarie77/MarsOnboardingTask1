@@ -16,10 +16,15 @@ Scenario Outline: edit profile file with valid details
 	Given I logged into localhost:5000/Home successfully 
 	When I navigate to Profile Page
 	When I update '<Languages>' on existing Profile File
-	Then  the record should have the updated '<Languages>'
+	Then the record should have the updated '<Languages>'
 
 	Examples:
 	| Languages |
 	| Japanese  |
 	| Sign      |
 	 
+Scenario: Remove added language and close the Browser
+	Given I logged into localhost:5000/Home successfully 
+	When I navigate to Profile Page
+	When I Delete the Record
+	Then The record should be Deleted successfully

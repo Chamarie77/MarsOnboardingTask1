@@ -22,14 +22,14 @@ namespace MarsOnboardingTask.Pages
                 driver.FindElement(By.LinkText("Sign In")).Click();
 
                 // identify username  textbox and enter valid email address
-                IWebElement usernameTextbox = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[1]/input"));
+                IWebElement usernameTextbox = driver.FindElement(By.XPath("//input[@name='email']"));
                 usernameTextbox.SendKeys("cmannatunga@yahoo.com");
 
                 // identify password textbox and enter valid password
-                IWebElement passwordTextbox = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[2]/input"));
+                IWebElement passwordTextbox = driver.FindElement(By.XPath("//input[@name='password']"));
                 passwordTextbox.SendKeys("onboardingMay22");
                 // click on login button
-                IWebElement loginButton = driver.FindElement(By.XPath("/html/body/div[2]/div/div/div[1]/div/div[4]/button"));
+                IWebElement loginButton = driver.FindElement(By.XPath("//button[text()='Login']"));
                 loginButton.Click();
             }
             catch(Exception ex)

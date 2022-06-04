@@ -47,13 +47,13 @@ namespace MarsOnboardingTask.StepDefinitions
         [Then(@"Then the new record should be created successfully")]
         public void ThenThenTheNewRecordShouldBeCreatedSuccessfully()
         {
-            Thread.Sleep(5000);
-            //ProfilePage profilePageObj = new ProfilePage();
             string newLanguage = profilePageObj.GetLanguage(driver);
             string newLevel = profilePageObj.GetLevel(driver);
 
             Assert.That(newLanguage.Equals("Sinhalese"), "Actual Language and expected Language do not match" );
             Assert.That(newLevel.Equals("Native/Bilingual"), "Actual Level and expected Level do not match");
+
+            profilePageObj.CloseBrowser(driver);
         }
               
         
@@ -66,11 +66,24 @@ namespace MarsOnboardingTask.StepDefinitions
         }
 
         [Then(@"the record should have the updated '([^']*)'")]
-        public void ThenTheRecordShouldHaveTheUpdated(string japanese)
+        public void ThenTheRecordShouldHaveTheUpdated(string language)
         {
             string editedLanguage = profilePageObj.GetEditedLanguage(driver);
 
-            Assert.That(editedLanguage == "Actual language and expected language do not match");
+            Assert.That(editedLanguage.Equals(language), "Actual language and expected language do not match");
+
+            profilePageObj.CloseBrowser(driver);
+        }
+        [When(@"I Delete the Record")]
+        public void WhenIDeleteTheRecord()
+        {
+            profilePageObj.DeleteAddedLanguage(driver);
+        }
+
+        [Then(@"The record should be Deleted successfully")]
+        public void ThenTheRecordShouldBeDeletedSuccessfully()
+        {
+            profilePageObj.CloseBrowser(driver);
         }
 
     }

@@ -15,10 +15,10 @@ namespace MarsOnboardingTask.Pages
         {
             // go to profile file
 
-            Wait.WaitToBeClickable(driver, "XPath", "//*[@id='account-profile-section']/div/div[1]", 10);
+            Wait.WaitToBeClickable(driver, "XPath", "//div[@id='account-profile-section']", 10);
 
-            IWebElement profileDropDown = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/div[1]/div[2]/div/span"));
-            Wait.WaitToBeClickable(driver, "XPath", "//*[@id='account-profile-section']/div/div[1]/div[2]/div/span", 10);           
+            IWebElement profileDropDown = driver.FindElement(By.XPath("//span[contains(@class, 'item ui dropdown link')]"));
+            Wait.WaitToBeClickable(driver, "XPath", "//span[contains(@class, 'item ui dropdown link')]", 10);           
             profileDropDown.Click();
 
             Wait.WaitToBeClickable(driver, "XPath", "//a[text()[contains(.,'Go to Profile')]]", 10);            

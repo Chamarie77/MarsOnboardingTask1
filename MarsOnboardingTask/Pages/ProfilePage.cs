@@ -14,51 +14,64 @@ namespace MarsOnboardingTask.Pages
     {
         public void AddDetailsToProfile(IWebDriver driver)
         {
-
-            //click on multiple selection tab 
-
+            //click on multiple selection tab
             // click on languages tab
-            IWebElement languagesOption = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[1]/a[1]"));
+            IWebElement languagesOption = driver.FindElement(By.XPath("//form//a[contains(text(),'Languages')]"));
             languagesOption.Click();
 
             // to add new languages
             //click on Add New button
-            IWebElement addnewButtonLanguage = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/thead/tr/th[3]/div"));
+            IWebElement addnewButtonLanguage = driver.FindElement(By.XPath("//div[contains(text(),'Add New')]"));
             addnewButtonLanguage.Click();
 
+            Wait.WaitToBeClickable(driver, "xpath", "//input[@placeholder='Add Language']", 10);
             // to add a new language
-            IWebElement languageTextbox = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[1]/input"));
+            IWebElement languageTextbox = driver.FindElement(By.XPath("//input[@placeholder='Add Language']"));
             languageTextbox.SendKeys("Sinhalese");
 
-            IWebElement languagelevelDropdownOption = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[2]/select/option[1]"));
+            IWebElement languagelevelDropdownOption = driver.FindElement(By.XPath("//select[@class='ui dropdown']"));
             languagelevelDropdownOption.Click();
 
-            Wait.WaitToBeClickable(driver, "XPath", "//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[2]/select/option[5]", 10);
-            IWebElement languageOption = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[2]/select/option[5]"));
+            Wait.WaitToBeClickable(driver, "XPath", "//select[@class='ui dropdown']/option[@value='Native/Bilingual']", 10);
+            IWebElement languageOption = driver.FindElement(By.XPath("//select[@class='ui dropdown']/option[@value='Native/Bilingual']"));
             languageOption.Click();
 
 
             // Click on Add button for language
-            IWebElement addLanguageButton = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[3]/input[1]"));
+            IWebElement addLanguageButton = driver.FindElement(By.XPath("//input[@type='button' and @value='Add']"));
             addLanguageButton.Click();
-            //Wait.WaitToBeClickable(driver, "XPath", "//*[@id='account-profile-section']/div/div[1]/div[2]/div/span/div/a[1]", 10);
-            //Wait.WaitToBeClickable(driver, "XPath", "//*[text()[contains(.,'Sinhalese')]]", 10);
-            Wait.WaitToBeVisible(driver, "XPath", "//td[text()[contains(.,'Sinhalese')]]", 20);
-            Thread.Sleep(5000);
-            
+
+            // To find remove icon
+            IWebElement deleteElement = driver.FindElement(By.XPath("//i[@class='remove icon']"));
+            Wait.WaitToBeVisible(driver, "XPath", "//i[@class='remove icon']", 20);
+
         }
 
+        //To delete added language
+        public void DeleteAddedLanguage(IWebDriver driver)
+        {
+            Wait.WaitToBeVisible(driver, "XPath", "//i[@class='remove icon']", 20);
+            IWebElement deleteElement = driver.FindElement(By.XPath("//i[@class='remove icon']"));
+            deleteElement.Click();
+        }
+
+        // To close browser
+        public void CloseBrowser(IWebDriver driver)
+        {
+            driver.Quit();
+        }
+        
+        // To get the language
         public string GetLanguage(IWebDriver driver)
         {
-            //IWebElement actualLanguage = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[2]/tr/td[1]"));
-            IWebElement actualLanguage = driver.FindElement(By.XPath("//*[text()[contains(.,'Sinhalese')]]"));
+            IWebElement actualLanguage = driver.FindElement(By.XPath("//td[contains(text(),'Sinhalese')]"));
             return actualLanguage.Text;
         }
-
+        
+        // To get the language level
         public string GetLevel(IWebDriver driver)
         {
-            //IWebElement actualLevel = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/div/div[2]/select/option[5]"));
-            IWebElement actualLevel = driver.FindElement(By.XPath("//*[text()[contains(.,'Native/Bilingual')]]"));
+            IWebElement actualLevel = driver.FindElement(By.XPath("//td[contains(text(),'Native/Bilingual')]"));
             return actualLevel.Text;
         }
 
@@ -66,23 +79,25 @@ namespace MarsOnboardingTask.Pages
         {
 
             // wait until the entire profile page is displayed
-            Wait.WaitToBeVisible(driver, "XPath", "//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[1]/tr/td[1]", 6);
-
+               Wait.WaitToBeVisible(driver, "XPath", "//*[@id='account-profile-section']//form", 6);
+               Wait.WaitToBeVisible(driver, "XPath", "//form//i[@class='outline write icon']", 5); 
+           
 
             // click on edit pen icon
-            IWebElement goToEditIcon = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[2]/tr/td[3]/span[1]/i"));
+            IWebElement goToEditIcon = driver.FindElement(By.XPath("//span/i[@class='outline write icon']"));
             goToEditIcon.Click();
 
-            IWebElement findRecordCreated = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[2]/tr/td/div/div[1]/input"));
+            // to find the created record
+            IWebElement findRecordCreated = driver.FindElement(By.XPath("//form//table//input"));
             findRecordCreated.Clear();
             findRecordCreated.SendKeys(language);
-
-            if (findRecordCreated.Text == "Japanese")
+           
+            if (findRecordCreated.GetDomProperty("value").Equals(language))
             {
                 //click on update buton
-                IWebElement updateButton = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[2]/tr/td/div/span/input[1]"));
+                IWebElement updateButton = driver.FindElement(By.XPath("//form//table//span/input[@value='Update']"));
                 updateButton.Click();
-
+                Wait.WaitToBeVisible(driver, "XPath", "//i[@class='remove icon']", 20);
             }
             else
             {
@@ -91,7 +106,8 @@ namespace MarsOnboardingTask.Pages
         }
         public string GetEditedLanguage(IWebDriver driver)
         {
-            IWebElement createdLanguage = driver.FindElement(By.XPath("//*[@id='account-profile-section']/div/section[2]/div/div/div/div[3]/form/div[2]/div/div[2]/div/table/tbody[2]/tr/td/div/div[1]/input"));
+            Wait.WaitToBeVisible(driver, "XPath", "//i[@class='remove icon']", 20);
+            IWebElement createdLanguage = driver.FindElement(By.XPath("//div[@data-tab='first']//td"));
             return createdLanguage.Text;
         }
 
