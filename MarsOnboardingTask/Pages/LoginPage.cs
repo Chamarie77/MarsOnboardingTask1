@@ -28,6 +28,7 @@ namespace MarsOnboardingTask.Pages
                 // identify password textbox and enter valid password
                 IWebElement passwordTextbox = driver.FindElement(By.XPath("//input[@name='password']"));
                 passwordTextbox.SendKeys("onboardingMay22");
+                
                 // click on login button
                 IWebElement loginButton = driver.FindElement(By.XPath("//button[text()='Login']"));
                 loginButton.Click();

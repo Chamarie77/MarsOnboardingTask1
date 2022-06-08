@@ -6,13 +6,13 @@ So, I can manage profile file successfully.
 
 
 
-Scenario: create profile file with valid details
+Scenario: Create Profile file with valid details
 	Given I logged into localhost:5000/Home successfully 
 	When I navigate to Profile Page
 	When I create a new record for Language
-	Then Then the new record should be created successfully
+	Then The new record should be created successfully
 
-Scenario Outline: edit profile file with valid details
+Scenario Outline: Edit Profile file with valid details
 	Given I logged into localhost:5000/Home successfully 
 	When I navigate to Profile Page
 	When I update '<Languages>' on existing Profile File
@@ -26,5 +26,11 @@ Scenario Outline: edit profile file with valid details
 Scenario: Remove added language and close the Browser
 	Given I logged into localhost:5000/Home successfully 
 	When I navigate to Profile Page
-	When I Delete the Record
+	When I Delete the Language Record
 	Then The record should be Deleted successfully
+
+
+
+
+
+
