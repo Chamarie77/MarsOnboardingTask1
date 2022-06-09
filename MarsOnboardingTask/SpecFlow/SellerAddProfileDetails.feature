@@ -10,7 +10,7 @@ Scenario: Create Profile file with valid details
 	Given I logged into localhost:5000/Home successfully 
 	When I navigate to Profile Page
 	When I create a new record for Language
-	Then The new record should be created successfully
+	Then then new record should be created successfully
 
 Scenario Outline: Edit Profile file with valid details
 	Given I logged into localhost:5000/Home successfully 
